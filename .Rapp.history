@@ -1,0 +1,250 @@
+?trellis.par.set
+?splom
+?print.trellis
+library(ggplot2)
+qplot(Wind, Ozone, data = airquality, geom = "smooth")
+qplot(Wind, Ozone, data = airquality)
+qplot(Wind, Ozone, data = airquality, facets = .~ factor(Month))
+airquality = transform(airquality, Month = factor(Month))
+qplot(Wind, Ozone, data = airquality, facets = .~ Month)
+qplot(votes, rating, data = movies)
+qplot(votes, rating, data = movies, smooth = "loess")
+qplot(votes, rating, data = movies, panel = panel.loess)
+qplot(votes, rating, data = movies) + stats.smooth("loess")
+qplot(votes, rating, data = movies) + stats_smooth("loess")
+qplot(votes, rating, data = movies) + geom_smooth()
+q()
+getwd()
+set.seed(1234)
+par(mar = c(0,0,0,0))
+x <- rnorm(12, mean = rep(1:3, each = 4), sd=0.2)
+y <- rnorm(12, mean = rep(c(1,2,1), each = 4), sd = 0.2)
+plot(x,y, col="blue", pch=19, cex = 2)
+text(x + 0.05, y + 0.05, labels = as.character(1:12))
+dataFrame <- data.frame(x = x, y = y)
+head(dataFrame)
+dist(dataFrame)
+distxy <- dist(dataFrame)
+hClustering <- hclust(distxy)
+plot(hClustering)
+kmeansObj <- kmeans(dataFrame, centers = 3)
+plot(kmeansObj)
+plot(x, y, col = kmeansObj$cluster, pch=19, cex = 2)
+points(kmeansObj$centers, col = 1:3, pch = 3, cex = 3, lwd = 3)
+q()
+set.seed(12345)
+par(mar = rep(0.2, 4))
+dataMatrix <- matrix(rnorm(400), nrow = 40)
+image(1:10, 1:40, t(dataMatrix) [, nrow(dataMAtrix):1])
+image(1:10, 1:40, t(dataMatrix) [, nrow(dataMatrix):1])
+heatmap(dataMatrix)
+q()
+colors()
+x <- colors()
+head(x)
+x
+install.packages(RColorBrewer)
+install.packages("RColorBrewer")
+library(RColorBrewer)
+cols <- brewer.pal(3, "BuGn")
+cols
+pal <- colorRampPalette(cols)
+image(volcano, col = pal(20))
+image(volcano, col = pal(40))
+image(volcano, col = pal(5))
+image(volcano, col = pal(500))
+image(volcano, col = pal(25))
+image(volcano, col = pal(5))
+x <- rnorm(10000)
+y <- rnorm(10000)
+plot(x,y)
+smoothScatter(x,y)
+smoothScatter(x,y, pch=19)
+plot(x,y, pch = 19)
+plot(x,y, col=rgb(0,0,0,0.2) pch = 19)
+plot(x,y, col=rgb(0,0,0,0.2), pch = 19)
+q()
+?aggregate
+q()
+wektor <- 1:10
+wektor
+wektor[1:3]
+wektor[c(-1,-3,-5)]
+wektor[c(2,-1)]
+wektor <- c(a = 1, b = 2, c = 3)
+wektor[c("a", "b")]
+wektor[c("a", "c")]
+wektor
+macierz <- matrix(1:4, 2, 2)
+macierz
+macierz[1,]
+macierz[,2]
+macierz[-1,-1]
+macierz[-1,-1, drop=FALSE]
+macierz[1,,drop=FALSE]
+macierz[1,]
+osobnik <- list(imie=c("Jan", "Tomasz"), nazwisko="Kowalski", wiek=25, wzwiazku=TRUE)
+osobnik
+osobnik$wiek
+osobnik[1]
+osobnik[[1]]
+macierz
+macierz[[2]]
+wektor <- c(11, 13, 10.5, -3, 11, -3)
+wich(wektor == 11)
+which(wektor == 11)
+unique(wektor == 11)
+which(wektor < 11)
+which(wektor == min(wektor))
+which.min(wektor)
+which.max(wektor)
+match(wektor, 11)
+LETTERS
+LETTERS %in% c("A", "Z", "G")
+match(LETTERS, c("A", "D"))
+which(LETTERS %in% c("A", "D"))
+q()
+statystyka <- c(ala = FALSE, ola = TRUE, ewa = TRUE)
+prowadzacy <- c(ala = TRUE, ola = TRUE, ewa = FALSE)
+statystyka & prowadzacy
+statystyka && prowadzacy
+statystyka | prowadzacy
+statystyka || prowadzacy
+-2:2
+2:-2
+1:10
+seq(10)
+seq(10, 25)
+seq(10, 25, by=10)
+seq(10,25, length.out=10)
+letters
+month.name
+sample(letters, 10, TRUE)
+sample(letters, 10, FALSE)
+sample(month.name, 3, TRUE)
+sample(month.name, 3, FALSE)
+sample(1:3, 10, TRUE, prob=c(0.6, 0.3, 0.1))
+sample(1:3, 20, TRUE, prob=c(0.6, 0.3, 0.1))
+nap <- rep(c("Ala ma kota", "Ola nie ma kota", "Ela chce miec kota"), 2)
+nap
+cat(nap)
+print(nap)
+str(nap)
+x <- function(x) x
+I1 <- function(x) x
+I2 <- function(x) invisible(x)
+a <- I1(1)
+a
+a <- I2(1)
+a
+I1(1)
+I2(1)
+paste("Ala", "ma", 5)
+paste("Ala", "ma", 5, sep="; ")
+paste("Jeszcze", 3:0, "...")
+paste(1:5, letters[1:5], sep=" * ")
+paste(1:5, letters[1:5], sep=",", collapse="; ")
+11/3
+format(11/3)
+format(11/3, sci=TRUE)
+format(11/3, digits= 2)
+forma(c(12,21)/3, nsmall = 2)
+format(c(12,21)/3, nsmall = 2)
+format(c(12,21)/3, nsmall = 2, digits=2)
+format(c(12,21)/3, nsmall = 1, digits=2)
+require(cwhstring)
+install.packages("cwhstring")
+q()
+install.packages("kernlab")
+q()
+library(kernlab)
+data(spam)
+str(spam)
+summary(spam)
+str(spam)
+head(spam)
+q()
+library(knitr)
+q()
+setwd("homework/DS/ReproRes/RepData_PeerAssessment1/")
+unzip("activity.zip")
+activ <- read.csv("activity.csv", header=TRUE, sep=",")
+head(active)
+head(activ)
+tail(active)
+tail(activ)
+str(activ)
+summary(activ)
+active <- read.csv("activity.csv", header=TRUE, sep=",")
+active$date <- as.Date(active$date)
+head(active)
+str(active)
+sum(which(is.na(active)))
+sum(is.na(active$steps))
+sum(which(is.na(active$steps)))
+which(is.na(active$steps))
+is.na(active$steps)
+sum(is.na(active$steps))
+hist(active$steps)
+hist(active)
+?hist
+hist(active$steps, breaks=active$data)
+hist(active$steps, na.omit=TRUE)
+head(active)
+head(active)
+sumByDay <- tapply(active$steps, active$date, sum)
+hist(sumByDay)
+barplot(sumByDay)
+hist(sumByDay)
+str(sumByDay)
+na.omit(mean(sumByDay))
+mean(na.omit(sumByDay))
+mean(na.omit(sumByDay[1,]))
+summary(sumByDay)
+summary <- summary(sumByDay)
+summary[3]
+summary[4]
+head(active)
+tail(active)
+plot(active$interval, active$steps, type="l")
+aveByDay <- tapply(active$steps, active$date, mean)
+plot(active$interval, aveByDay, type="l")
+plot(aveByDay, type="l")
+hist(sumByDay, main="total number of steps taken each day")
+hist(sumByDay, main="total number of steps taken each day", ylab = "stpes each day")
+hist(sumByDay, main="total number of steps taken each day", xlab = "steps each day")
+plot(aveByDay, type="l", na.omit=TRUE)
+aveByDay <- tapply(active$steps, active$date, mean, na.omit=TRUE)
+plot(aveByDay, type="l")
+aveByDay <- tapply(active$steps, active$interval, mean, na.omit=TRUE)
+plot(aveByDay, type="l")
+activeClean <- subset(active, !is.na(active$steps))
+aveByDay <- tapply(activeClean$steps, active$interval, mean)
+aveByDay <- tapply(activeClean$steps, activeClean$interval, mean)
+plot(aveByDay, type="l")
+plot(aveByDay, type="l")
+plot(aveByDay, type="l")
+plot(aveByDay, type="l")
+aveByDay <- tapply(active$steps, active$interval, mean, na.rm=TRUE)
+plot(aveByDay, type="l")
+head(aveByDay)
+aveByDay
+summary(aveByDay)
+table(sumByDay)
+aveByDay
+max(aveByDay)
+which(max(aveByDay))
+str(aveByDay)
+aveByDay[max(aveByDay)]
+aveByDay[max(aveByDay),]
+aveByDay[,max(aveByDay)]
+max(aveByDay)
+which.max(aveByDay)
+nanes(max(aveByDay))
+names(max(aveByDay))
+aveByDay[which.max(aveByDay)]
+sum(is.na(active))
+missing <- sum(is.na(active))
+print(missing)
+missing
+q()

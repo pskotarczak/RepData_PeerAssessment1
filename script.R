@@ -59,4 +59,12 @@ aveByInter[which.max(aveByInter)]
 missing <- sum(is.na(active))
 print(missing)
 
+# missing values will be filled by the mean for particular 5-minute interval
+# for this we will use the aveByInter variable
+aveByInter <- as.data.frame(aveByInter)
+for(i in 1:length(active$steps)) {
+    if(is.na(active$steps[i])) {
+        active$steps[i] = aveByInter[i]
+    }
+}
 
