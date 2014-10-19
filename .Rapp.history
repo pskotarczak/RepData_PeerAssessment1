@@ -1,3 +1,12 @@
+table(BodyWeight$Diet)
+table(BodyWeight$Rat)
+?axis
+?panel.abline
+?points
+library(datasets)
+data(airquality)
+p <- xyplot(Ozone ~ Wind | factor(Month), data = airquality)
+print(p)
 ?trellis.par.set
 ?splom
 ?print.trellis
@@ -166,85 +175,132 @@ head(spam)
 q()
 library(knitr)
 q()
+getwd()
 setwd("homework/DS/ReproRes/RepData_PeerAssessment1/")
-unzip("activity.zip")
-activ <- read.csv("activity.csv", header=TRUE, sep=",")
-head(active)
-head(activ)
-tail(active)
-tail(activ)
-str(activ)
-summary(activ)
 active <- read.csv("activity.csv", header=TRUE, sep=",")
-active$date <- as.Date(active$date)
 head(active)
-str(active)
-sum(which(is.na(active)))
-sum(is.na(active$steps))
-sum(which(is.na(active$steps)))
-which(is.na(active$steps))
-is.na(active$steps)
-sum(is.na(active$steps))
-hist(active$steps)
-hist(active)
-?hist
-hist(active$steps, breaks=active$data)
-hist(active$steps, na.omit=TRUE)
-head(active)
-head(active)
-sumByDay <- tapply(active$steps, active$date, sum)
-hist(sumByDay)
-barplot(sumByDay)
-hist(sumByDay)
-str(sumByDay)
-na.omit(mean(sumByDay))
-mean(na.omit(sumByDay))
-mean(na.omit(sumByDay[1,]))
-summary(sumByDay)
-summary <- summary(sumByDay)
-summary[3]
-summary[4]
-head(active)
+meanByInter <- tapply(active$steps, active$interval, mean, na.rm=TRUE)
+head(meanByInter)
+tail(meanByInter)
 tail(active)
-plot(active$interval, active$steps, type="l")
-aveByDay <- tapply(active$steps, active$date, mean)
-plot(active$interval, aveByDay, type="l")
-plot(aveByDay, type="l")
-hist(sumByDay, main="total number of steps taken each day")
-hist(sumByDay, main="total number of steps taken each day", ylab = "stpes each day")
-hist(sumByDay, main="total number of steps taken each day", xlab = "steps each day")
-plot(aveByDay, type="l", na.omit=TRUE)
-aveByDay <- tapply(active$steps, active$date, mean, na.omit=TRUE)
-plot(aveByDay, type="l")
-aveByDay <- tapply(active$steps, active$interval, mean, na.omit=TRUE)
-plot(aveByDay, type="l")
-activeClean <- subset(active, !is.na(active$steps))
-aveByDay <- tapply(activeClean$steps, active$interval, mean)
-aveByDay <- tapply(activeClean$steps, activeClean$interval, mean)
-plot(aveByDay, type="l")
-plot(aveByDay, type="l")
-plot(aveByDay, type="l")
-plot(aveByDay, type="l")
-aveByDay <- tapply(active$steps, active$interval, mean, na.rm=TRUE)
-plot(aveByDay, type="l")
-head(aveByDay)
-aveByDay
-summary(aveByDay)
-table(sumByDay)
-aveByDay
-max(aveByDay)
-which(max(aveByDay))
-str(aveByDay)
-aveByDay[max(aveByDay)]
-aveByDay[max(aveByDay),]
-aveByDay[,max(aveByDay)]
-max(aveByDay)
-which.max(aveByDay)
-nanes(max(aveByDay))
-names(max(aveByDay))
-aveByDay[which.max(aveByDay)]
-sum(is.na(active))
-missing <- sum(is.na(active))
-print(missing)
-missing
+str(meanByInter)
+x <- as.data.frame(meanByInter)
+head(meanByInter)
+str(meanByInter)
+head(x)
+for(i in active$steps) { }
+for(i in active$steps) {#
+    if(active$steps == NA) {#
+        active$steps = meanByInter[i]#
+    }#
+}
+for(i in active$steps) {#
+    if(active$steps == "NA") {#
+        active$steps = meanByInter[i]#
+    }#
+}
+for(i in active$steps) {#
+    if(active$steps[i] == "NA") {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+for(i in active$steps) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = aveByInter[i]#
+    }#
+}
+for(i in active$steps) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+length(active$steps)
+for(i in length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = aveByInter[i]#
+    }#
+}
+for(i in length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+head(active)
+active$steps[1]
+active[1]
+active[1,]
+for(i in length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+meanByInter[1]
+meanByInter[1,]
+meanByInter[,1]
+str(meanByInter)
+meanByInter <- as.data.frame(meanByInter)
+for(i in length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+meanByInter[1]
+meanByInter[1,]
+meanByInter[,1]
+head(meanByInter)
+str(meanByInter)
+names(meanByInter)
+meanByInter[2]
+meanByInter[2,]
+for(i in length(active$steps)) {#
+    if(is.na(active$steps)[i]) {#
+        active$steps[i] = meanByInter[i]#
+    }#
+}
+for(i in length(active$steps)) {#
+    if(is.na(active$steps)[i]) {#
+        active$steps[i] = meanByInter[i,]#
+    }#
+}
+head(active)
+meanByInter[1,]
+head(meanByInter)
+meanByInter$meanByInter[1]
+str(meanByInter$meanByInter[1])
+as.numeric(meanByInter[1,])
+for(i in length(active$steps)) {#
+    if(is.na(active$steps)[i]) {#
+        active$steps[i] = as.numeric(meanByInter[i,])#
+    }#
+}
+head(active)
+active$steps[1]
+active$steps[100]
+active$steps[130]
+active$steps[504]
+active$steps[847]
+active$steps[1991]
+active$steps[2000]
+active$steps[16000]
+tail(active)
+active <- read.csv("activity.csv", header=TRUE, sep=",")
+active$steps[340]
+active$steps[8540]
+tail(active)
+active$steps[16000]
+active$steps[13000]
+summary(active)
+for(i in length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = as.numeric(meanByInter[i,])#
+    }#
+}
+head(active)
+for(i in 1:length(active$steps)) {#
+    if(is.na(active$steps[i])) {#
+        active$steps[i] = as.numeric(meanByInter[i,])#
+    }#
+}
+head(active)
+active$steps[456]
 q()

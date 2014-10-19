@@ -7,7 +7,7 @@ unzip("activity.zip")
 active <- read.csv("actvity.csv", header=TRUE, sep=",")
 
 # Converting date variable into an date format
-active$date <- as.Data(active$date)
+active$date <- as.Date(active$date)
 
 # presenting and summaring data
 head(active)
@@ -31,10 +31,10 @@ hist(sumByDay, main="total number of steps taken each day",
 # using summary function on the sumByDay variable
 summary <- summary(sumByDay)
 
-# presenting the mean value
+# presenting the median value
 summary[3]
 
-# presenting the median value
+# presenting the mean value
 summary[4]
 
 ## Part III - what is the average daily activity pattern ?
@@ -64,7 +64,50 @@ print(missing)
 aveByInter <- as.data.frame(aveByInter)
 for(i in 1:length(active$steps)) {
     if(is.na(active$steps[i])) {
-        active$steps[i] = aveByInter[i]
+        active$steps[i] = as.numeric(aveByInter[i,])
     }
 }
+
+
+# making a histogram of the total number of steps taken each day after after
+# filling the missing values
+# summing steps by day
+sumByDayFull <- tapply(active$steps, active$date, sum)
+
+# making a histogram
+hist(sumByDayFull, main="total number of days taken each day (filled NA's)",
+     xlab="steps each day")
+
+# calculating the mean and median total number of steps taken per day
+# with filled missing values
+# using summary function on the sumByDay variable
+summaryFull <- summary(sumByDayFull)
+
+# presenting the Median value
+summaryFull[3]
+
+# presenting the Mean value
+summaryFull[4]
+
+## PART V - Are there difference in activity patterns between weekdays and
+## weekends
+
+# creating a new factor variable in the dataset with two levels 1) weekday
+# and 2) weekend indicating whether a given day is a weekday or weekend day
+weekend <- weekdays(active$date) == "Saturday"|
+    weekdays(active$date) == "Sunday"
+active$dayType[weekend] <- "weekend"
+active$dayType[!weekend] <- "weekday"
+active$day <- as.factor(active$day)
+
+# making a panel plot containing a time series plot
+library(lattice)
+
+aveStepInt <- aggregate(active$steps, by=list(active$interval, active$dayType),
+                        mean, na.rm=TRUE)
+names(aveStepInt) <- c("interval", "dayType", "steps")
+
+
+
+
 
