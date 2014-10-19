@@ -44,7 +44,7 @@ aveByInter <- tapply(active$steps, active$interval, mean, na.rm=TRUE)
 
 # making the plot
 plot(aveByInter, type="l", main="Average number of steps by 5 min interval",
-     ylab="averaged number of steps", xlab="time of day")
+     ylab="averaged number of steps", xlab="time of day", xaxt='n')
 axis(1, at=c(0,48,96,144,192, 240, 288), labels=c("0", "4", "8", "12", "16",
                                              "20", "24"))
 

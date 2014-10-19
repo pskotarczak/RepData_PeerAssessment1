@@ -113,8 +113,7 @@ of steps taken, averaged across all days:
 
 ```r
 plot(aveByInter, type="l", main="Average number of steps by 5 min interval",
-     ylab="averaged number of steps", xlab="time of day")
-axis(1, at=c(0,48,96,144, 192,240,288), labels=c("0", "4", "8", "12", "16", "20", "24"))
+     ylab="averaged number of steps", xlab="time intervals")
 ```
 
 ![](./PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
@@ -228,7 +227,8 @@ aveStepInt <- aggregate(active$steps, by=list(active$interval, active$dayType),
                         mean, na.rm=TRUE)
 names(aveStepInt) <- c("interval", "dayType", "steps")
 
-xyplot(steps ~ interval | dayType, data=aveStepInt, type="l", layout=c(1,2))
+xyplot(steps ~ interval/10 | dayType, data=aveStepInt, type="l", layout=c(1,2),
+       xlab="interval")
 ```
 
 ![](./PA1_template_files/figure-html/unnamed-chunk-17-1.png) 
