@@ -1,6 +1,6 @@
 ## Part I - Loading and preprocessing the data
 
-# Unzipung file
+# Unziping file
 unzip("activity.zip")
 
 # Loading data into a  file
@@ -107,6 +107,7 @@ aveStepInt <- aggregate(active$steps, by=list(active$interval, active$dayType),
                         mean, na.rm=TRUE)
 names(aveStepInt) <- c("interval", "dayType", "steps")
 
+xyplot(steps ~ interval | dayType, data = aveStepInt, type="l", layout=c(1,2))
 
 
 
